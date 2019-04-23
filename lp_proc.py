@@ -7,20 +7,9 @@ import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.patches as pat
 
+import polar_rri
+
 from numpy.random import *
-
-def get_1sec_interval_data(src_df):
-    src_df = src_df.reset_index()
-    src_df['datetime'] = pd.to_datetime(src_df['datetime'])
-    src_df['sec'] = (src_df['datetime'] - src_df['datetime'][0]) / np.timedelta64(1, 's')
-    src_df['sec'] = src_df['sec'].map(lambda x: float(Decimal(str(x)).quantize(Decimal('0'), rounding=ROUND_HALF_UP)))
-
-    dst_df = src_df.drop_duplicates(['sec'])
-    last_time = int(dst_df['sec'].values[-1])+1
-    dst_df = dst_df.set_index(['sec']).reindex(np.arange(last_time), axis='index').drop(['index'], axis=1)
-    dst_df = dst_df.reset_index()
-
-    return dst_df
 
 def rotate_data(src_data, rot_deg):
     rad = np.radians(rot_deg)
@@ -85,11 +74,15 @@ def gen_test_data():
     return data.astype(int)
 
 if __name__ == "__main__":
-    src_file_name = 'sample.csv'
-    src_df = pd.read_csv(src_file_name)
-    src_df = get_1sec_interval_data(src_df)
+    src_file_path = './rr-2019-04-23_10-53-52.txt'
 
-    rri_arr = src_df[['sec','rri']].values
+    prri = polar_rri.PolarRRI(src_file_path)
+    prri.del_outliers(300, 1200)
+    prri.plot_rri()
+    rri_df = prri.get_rri_df()
+
+
+    rri_arr = rri_df[['time','rri']].values
     lp_arr = lorenz_plot(rri_arr)
 
 #    lp_arr = gen_test_data()

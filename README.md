@@ -1,6 +1,8 @@
 # lorenz-plot
-time series data â†’ lorenz-plot â†’ standard deviation
+time series data ¨ lorenz-plot ¨ standard deviation
 
-å¿ƒæ‹RRIã®ãƒ­ãƒ¼ãƒ¬ãƒ³ãƒ„ãƒ—ãƒ­ãƒƒãƒˆ(LP)ã«ã‚ˆã£ã¦RRIã®ã‚†ã‚‰ãŽã‚’è©•ä¾¡ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã¨è¨€ã‚ã‚Œã¦ã„ã¾ã™ã€‚
-lp_proc.pyã¯ã€1ç§’ã«1å›žã®é–“éš”ã§RRIãŒè¨˜éŒ²ã•ã‚ŒãŸCSVãƒ•ã‚¡ã‚¤ãƒ«ã‚’å…¥åŠ›ã«å—ã‘ã€LPã‚’å®Ÿè¡Œã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆã§ã™ã€‚
-lp_proc.pyã‚’å®Ÿè¡Œã™ã‚‹ã¨sample.csvã®ä¸­èº«ã®RRIã®LPã‚’æ•£å¸ƒå›³ã§è¡¨ç¤ºã—ãŸã®ã¡ã€45Â°å‚¾ã‘ã¦åŽŸç‚¹ã‹ã‚‰ã®å¹³å‡å€¤ã®è·é›¢ã€xè»¸æ–¹å‘ã®æ¨™æº–åå·®ã€yè»¸æ–¹å‘ã®æ¨™æº–åå·®ã‚’è¨ˆç®—ã—ã¾ã™ã€‚
+S”RRI‚Ìƒ[ƒŒƒ“ƒcƒvƒƒbƒg(LP)‚É‚æ‚Á‚ÄRRI‚Ì‚ä‚ç‚¬‚ð•]‰¿‚·‚é‚±‚Æ‚ª‚Å‚«‚é‚ÆŒ¾‚í‚ê‚Ä‚¢‚Ü‚·B
+lp_proc.py‚ÍA1•b‚É1‰ñ‚ÌŠÔŠu‚ÅRRI‚ª‹L˜^‚³‚ê‚½TXTƒtƒ@ƒCƒ‹‚ð“ü—Í‚ÉŽó‚¯ALP‚ðŽÀs‚·‚éƒXƒNƒŠƒvƒg‚Å‚·B
+lp_proc.py‚ðŽÀs‚·‚é‚Ærr-2019-04-23_10-53-52.txt‚Ì’†g‚ÌRRI‚ÌLP‚ðŽU•z}‚Å•\Ž¦‚µ‚½‚Ì‚¿A45‹ŒX‚¯‚ÄŒ´“_‚©‚ç‚Ì•½‹Ï’l‚Ì‹——£AxŽ²•ûŒü‚Ì•W€•Î·AyŽ²•ûŒü‚Ì•W€•Î·‚ðŒvŽZ‚µ‚Ü‚·B
+
+TXTƒtƒ@ƒCƒ‹‚ÌƒtƒH[ƒ}ƒbƒg‚ÍPolar»V800‚É‚æ‚Á‚Ä‹L˜^‚³‚êAPolarFlow‚É‚æ‚Á‚ÄƒGƒNƒXƒ|[ƒg‚³‚ê‚½RRŠÔŠuƒf[ƒ^‚Ìƒtƒ@ƒCƒ‹‚Å‚·B
