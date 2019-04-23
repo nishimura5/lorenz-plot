@@ -1,8 +1,8 @@
 # lorenz-plot
-time series data �� lorenz-plot �� standard deviation
+time series data → lorenz-plot → standard deviation
 
-�S��RRI�̃��[�����c�v���b�g(LP)�ɂ����RRI�̂�炬��]�����邱�Ƃ��ł���ƌ����Ă��܂��B
-lp_proc.py�́A1�b��1��̊Ԋu��RRI���L�^���ꂽTXT�t�@�C������͂Ɏ󂯁ALP�����s����X�N���v�g�ł��B
-lp_proc.py�����s�����rr-2019-04-23_10-53-52.txt�̒��g��RRI��LP���U�z�}�ŕ\�������̂��A45���X���Č��_����̕��ϒl�̋����Ax�������̕W���΍��Ay�������̕W���΍����v�Z���܂��B
+心拍RRIのローレンツプロット(LP)によってRRIのゆらぎを評価することができると言われています。
+lp_proc.pyは、RRIが記録されたTXTファイルを入力に受け、LPを実行するスクリプトです。
+lp_proc.pyを実行するとrr-2019-04-23_10-53-52.txtの中身のRRIのLPを散布図で表示したのち、45°傾けて原点からの平均値の距離、x軸方向の標準偏差、y軸方向の標準偏差を計算します。
 
-TXT�t�@�C���̃t�H�[�}�b�g��Polar��V800�ɂ���ċL�^����APolarFlow�ɂ���ăG�N�X�|�[�g���ꂽRR�Ԋu�f�[�^�̃t�@�C���ł��B
+TXTファイルのフォーマットはPolar製V800によって記録され、PolarFlowによってエクスポートされたRR間隔データのファイルです。
