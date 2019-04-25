@@ -9,7 +9,7 @@ import datetime
 class PolarRRI:
     def __init__(self, file_path):
         file_name = os.path.basename(file_path)
-        src_df = pd.read_csv(file_name, header=None, sep=' ')
+        src_df = pd.read_csv(file_path, header=None, sep=' ')
         src_df = src_df.rename(columns={0:'time', 1:'rri'})
         src_df['rri'] = src_df['rri'] * 1000
 
