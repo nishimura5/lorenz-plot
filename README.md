@@ -8,7 +8,7 @@ lp_proc.pyを実行するとrr-2019-04-23_10-53-52.txtの中身のRRIのLPを散
 TXTファイルのフォーマットはPolar製V800によって記録され、PolarFlowによってエクスポートされたRR間隔データのファイルです。
 
 ## Output Image
-![グラフ](https://raw.githubusercontent.com/nishimura5/lorenz-plot/images/sample.png)
+<img src="https://raw.githubusercontent.com/nishimura5/lorenz-plot/images/sample.png" width="400">
 
 ## API
 ### __init__(self, x_arr, y_arr, plot_size=3)
