@@ -1,11 +1,9 @@
-# lorenz-plot
+# lp_proc.py
 time series data → lorenz-plot → standard deviation
 
 心拍RRIのローレンツプロット(LP)によってRRIのゆらぎを評価することができると言われています。
 lp_proc.pyは、RRIが記録されたTXTファイルを入力に受け、LPを実行するスクリプトです。
-lp_proc.pyを実行するとrr-2019-04-23_10-53-52.txtの中身のRRIのLPを散布図で表示したのち、45°傾けて原点からの平均値の距離、x軸方向の標準偏差、y軸方向の標準偏差を計算します。
-
-TXTファイルのフォーマットはPolar製V800によって記録され、PolarFlowによってエクスポートされたRR間隔データのファイルです。
+sample.pyを実行するとrr-2019-04-23_10-53-52.txtの中身のRRIのLPを散布図で表示したのち、45°傾けて原点からの平均値の距離、x軸方向の標準偏差、y軸方向の標準偏差を計算します。
 
 ## Output Image
 <div align="center">
@@ -41,3 +39,29 @@ TXTファイルのフォーマットはPolar製V800によって記録され、Po
 #### Parameters:
 **file_path : str**　出力ファイル名
 
+# polar_rri.py
+
+rr-2019-04-23_10-53-52.txtのフォーマットは、Polar製V800によって記録されPolarFlowによってエクスポートされたRR間隔データのファイルです。
+半角スペースをデリミタとして左側は計測開始時刻を00:00とした受信時刻、右側がRRIとなっています。
+
+## API
+### __init__(self, file_path)
+ファイルを読み込みRRI[ms]を記録。
+#### Parameters:
+** file_path : str**　入力ファイルパス。ファイル名はrr-YYYY-MM-DD_hh_mm_ss.txtとなっております。
+
+### plot_rri(self)
+時系列グラフを描画
+
+
+### del_outliers(self, thresh_min, thresh_max)
+指定した値を外れ値としてデータから除外
+#### Parameters:
+** thresh_min : int**　閾値(最小値)
+
+** thresh_max : int**　閾値(最大値)
+
+### get_rri_df(self)
+データの取得
+#### Returns:
+** rri_df : DataFrame**
