@@ -48,7 +48,7 @@ rr-2019-04-23_10-53-52.txtのフォーマットは、Polar製V800によって記
 ### __init__(self, file_path)
 ファイルを読み込みRRI[ms]を記録。
 #### Parameters:
-** file_path : str**　入力ファイルパス。ファイル名はrr-YYYY-MM-DD_hh_mm_ss.txtとなっております。
+**file_path : str**　入力ファイルパス。ファイル名はrr-YYYY-MM-DD_hh_mm_ss.txtとなっております。
 
 ### plot_rri(self)
 時系列グラフを描画
@@ -57,11 +57,11 @@ rr-2019-04-23_10-53-52.txtのフォーマットは、Polar製V800によって記
 ### del_outliers(self, thresh_min, thresh_max)
 指定した値を外れ値としてデータから除外
 #### Parameters:
-** thresh_min : int**　閾値(最小値)
+**thresh_min : int**　閾値(最小値)
 
-** thresh_max : int**　閾値(最大値)
+**thresh_max : int**　閾値(最大値)
 
 ### get_rri_df(self)
 データの取得
 #### Returns:
-** rri_df : DataFrame**
+**rri_df : DataFrame**
