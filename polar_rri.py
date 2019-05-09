@@ -7,7 +7,9 @@ import os
 import datetime
 
 class PolarRRI:
-    def __init__(self, file_path):
+    def __init__(self, file_path=None):
+        if file_path is None:
+            return
         file_name = os.path.basename(file_path)
         src_df = pd.read_csv(file_path, header=None, sep=' ')
         src_df = src_df.rename(columns={0:'time', 1:'rri'})
@@ -26,7 +28,7 @@ class PolarRRI:
         register_matplotlib_converters()
         fig = plt.figure()
         ax = fig.add_subplot(111)
-        ax.xaxis.set_major_formatter(mdates.DateFormatter('%M:%S'))
+        ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M:%S'))
         ax.plot(self.rri_df.index.values, self.rri_df['rri'].values, marker='.')
         plt.show()
 
@@ -37,3 +39,11 @@ class PolarRRI:
     def get_rri_df(self):
         return self.rri_df
 
+    def write(self, file_path):
+        self.rri_df['rri'] = self.rri_df['rri'].astype('int')
+        self.rri_df.to_csv(file_path)
+
+    def import_rri(self, file_path):
+        self.rri_df = pd.read_csv(file_path)
+        self.rri_df['datetime'] = pd.to_datetime(self.rri_df['datetime'])
+        self.rri_df = self.rri_df.set_index(['datetime'])
