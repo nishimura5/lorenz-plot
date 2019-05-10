@@ -9,6 +9,7 @@ import datetime
 class PolarRRI:
     def __init__(self, file_path=None):
         if file_path is None:
+            self.rri_df = pd.DataFrame()
             return
         file_name = os.path.basename(file_path)
         src_df = pd.read_csv(file_path, header=None, sep=' ')
@@ -44,6 +45,7 @@ class PolarRRI:
         self.rri_df.to_csv(file_path)
 
     def import_rri(self, file_path):
-        self.rri_df = pd.read_csv(file_path)
-        self.rri_df['datetime'] = pd.to_datetime(self.rri_df['datetime'])
-        self.rri_df = self.rri_df.set_index(['datetime'])
+        rri_df = pd.read_csv(file_path)
+        rri_df['datetime'] = pd.to_datetime(rri_df['datetime'])
+        rri_df = rri_df.set_index(['datetime'])
+        self.rri_df = pd.concat([self.rri_df, rri_df])
