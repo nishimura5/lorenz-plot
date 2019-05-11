@@ -79,6 +79,7 @@ class LpProc:
 
     def write(self, file_path):
         plt.savefig(file_path)
+        plt.close()
 
     def __rotate_data(self, src_data, rot_deg):
         rad = np.radians(rot_deg)
