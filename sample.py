@@ -13,7 +13,7 @@ if __name__ == "__main__":
     rri_arr = rri_df[['time','rri']].values
 
     lp = lp_proc.LpProc(rri_arr)
-    S, mean = lp.calc_ellipse()
+    S, x_std, y_std, mean = lp.calc_ellipse()
     lp.set_font('C:/Windows/Fonts/meiryo.ttc')
     lp.draw_lp_scatter('サンプル')
     lp.write('dst.png')

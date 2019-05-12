@@ -39,14 +39,14 @@ class LpProc:
                 fill=False,
                 zorder=3)
 
-        return [self.S, self.mean]
+        return [self.S, x_std, y_std, self.mean]
 
     def set_font(self, font_path):
         self.fp = FontProperties(fname=font_path)
 
     def draw_lp_scatter(self, fig_title):
         range_ms = 1250
-        text = r"$S=$" +"%d\n"%(self.S)+ r"$m=$" + "%d"%(self.mean)
+        text = r"$S=$" +"%d\n"%(self.S)+ r"$m=$" + "%d\n"%(self.mean)+"%d"%(len(self.lp_arr[0]))
         base_line = np.linspace(0,range_ms,10)
 
         fig = plt.figure(figsize=(3, 3), dpi=300)
@@ -69,7 +69,7 @@ class LpProc:
                 c='dimgray',
                 zorder=2)
         ax.add_patch(self.ellipse)
-        ax.text(50, 1000, text)
+        ax.text(50, 900, text)
         ax.set_title(fig_title, fontproperties=self.fp)
         ax.set_xlabel('$RR_{n}$[ms]')
         ax.set_ylabel('$RR_{n+1}$[ms]')
