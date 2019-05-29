@@ -14,8 +14,10 @@ if __name__ == "__main__":
 
     lp = lp_proc.LpProc(rri_arr)
     S, x_std, y_std, mean = lp.calc_ellipse()
+    CSI, CVI = lp.get_csi_cvi()
+
     lp.set_font('C:/Windows/Fonts/meiryo.ttc')
     lp.draw_lp_scatter('サンプル')
     lp.write('dst.png')
 
-    print("mean:%.3f S:%.1f" % (mean, S))
+    print("CSI:%.3f CVI:%.3f mean:%.3f S:%.1f" % (CSI, CVI, mean, S))

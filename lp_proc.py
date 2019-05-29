@@ -27,6 +27,8 @@ class LpProc:
         x_std = rot_rri_arr[0].std()
         y_std = rot_rri_arr[1].std()
         self.S = np.pi * x_std * y_std
+        self.CSI = np.log10(x_std / y_std)
+        self.CVI = np.log10(x_std * y_std)
 
         self.ellipse = pat.Ellipse(
                 xy=(self.mean/math.sqrt(2),self.mean/math.sqrt(2)),
@@ -40,6 +42,9 @@ class LpProc:
                 zorder=3)
 
         return [self.S, x_std, y_std, self.mean]
+
+    def get_csi_cvi(self):
+        return [self.CSI, self.CVI]
 
     def set_font(self, font_path):
         self.fp = FontProperties(fname=font_path)
