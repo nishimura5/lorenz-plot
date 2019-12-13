@@ -23,25 +23,39 @@ class LpProc:
 
     def calc_ellipse(self):
         rot_rri_arr = self.__rotate_data(self.lp_arr, -45)
-        self.mean = rot_rri_arr[0].mean()
+        if len(rot_rri_arr) == 0:
+            return [None, None, None, None, None, None]
+
+        self.m = rot_rri_arr[0].mean()
         x_std = rot_rri_arr[0].std()
         y_std = rot_rri_arr[1].std()
         self.S = np.pi * x_std * y_std
-        self.CSI = np.log10(x_std / y_std)
-        self.CVI = np.log10(x_std * y_std)
+        self.CSI = x_std*4 / y_std*4
+        self.CVI = np.log10(x_std*4 * y_std*4)
 
-        self.ellipse = pat.Ellipse(
-                xy=(self.mean/math.sqrt(2),self.mean/math.sqrt(2)),
-                width=x_std*2,
-                height=y_std*2,
-                alpha=0.9,
+        self.ellipse4 = pat.Ellipse(
+                xy=(self.m/math.sqrt(2),self.m/math.sqrt(2)),
+                width=x_std*4,
+                height=y_std*4,
+                alpha=0.8,
                 angle=45,
-                lw=1,
+                lw=0.8,
                 ec='black',
                 fill=False,
                 zorder=3)
 
-        return [self.S, x_std, y_std, self.mean]
+        self.ellipse2 = pat.Ellipse(
+                xy=(self.m/math.sqrt(2),self.m/math.sqrt(2)),
+                width=x_std*2,
+                height=y_std*2,
+                alpha=0.8,
+                angle=45,
+                lw=0.4,
+                ec='black',
+                fill=False,
+                zorder=3)
+
+        return [self.S, x_std, y_std, self.m, self.CSI, self.CVI]
 
     def get_csi_cvi(self):
         return [self.CSI, self.CVI]
@@ -51,7 +65,7 @@ class LpProc:
 
     def draw_lp_scatter(self, fig_title):
         range_ms = 1250
-        text = r"$S=$" +"%d\n"%(self.S)+ r"$m=$" + "%d\n"%(self.mean)+"%d"%(len(self.lp_arr[0]))
+        text = r"$n=$"+"%d"%(len(self.lp_arr[0]))
         base_line = np.linspace(0,range_ms,10)
 
         fig = plt.figure(figsize=(3, 3), dpi=300)
@@ -73,8 +87,9 @@ class LpProc:
                 lw=0,
                 c='dimgray',
                 zorder=2)
-        ax.add_patch(self.ellipse)
-        ax.text(50, 900, text)
+        ax.add_patch(self.ellipse2)
+        ax.add_patch(self.ellipse4)
+        ax.text(50, 1100, text)
         ax.set_title(fig_title, fontproperties=self.fp)
         ax.set_xlabel('$RR_{n}$[ms]')
         ax.set_ylabel('$RR_{n+1}$[ms]')
