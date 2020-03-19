@@ -63,8 +63,7 @@ class LpProc:
     def set_font(self, font_path):
         self.fp = FontProperties(fname=font_path)
 
-    def draw_lp_scatter(self, fig_title):
-        range_ms = 1250
+    def draw_lp_scatter(self, fig_title, range_ms=1200):
         text = r"$n=$"+"%d"%(len(self.lp_arr[0]))
         base_line = np.linspace(0,range_ms,10)
 
